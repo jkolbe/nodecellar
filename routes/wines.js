@@ -34,8 +34,6 @@ exports.findAll = function(req, res) {
 			}
 		);
 	});
-
-	//res.send([{name:'wine1'}, {name:'wine2'}, {name:'wine3'}]);
 };
 
 exports.findById = function(req, res) {
@@ -46,11 +44,25 @@ exports.findById = function(req, res) {
         	function(err, item) { res.send(item); }
         );
     });
-
-	//res.send({id:req.params.id, name: "The Name", description: "description"});
 }
 
-exports.addWine = function(req, res) {}
+exports.addWine = function(req, res) {
+	var wine = req.body;
+    console.log(wine);
+    console.log('Adding wine: ' + JSON.stringify(wine));
+
+    db.collection('wines', function(err, collection) {
+        collection.insert(wine, {safe:true}, function(err, result){
+            if(err) {
+                res.send({error: 'An error occured'});
+            } else {
+                res.send(result[0]);
+            }
+        });
+    });
+}
+
+
 exports.updateWine = function(req, res) {}
 exports.deleteWine = function(req, res) {}
 
