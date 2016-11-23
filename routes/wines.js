@@ -5,3 +5,8 @@ exports.findAll = function(req, res) {
 exports.findById = function(req, res) {
 	res.send({id:req.params.id, name: "The Name", description: "description"});
 }
+
+exports.addWine = function(req, res) {}
+exports.updateWine = function(req, res) {}
+exports.deleteWine = function(req, res) {}
+
