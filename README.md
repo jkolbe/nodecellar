@@ -1,8 +1,13 @@
 # Creating a REST API using Node.js, Express, and MongoDB
 
 ## Prerequisites
+
 1. Install NodeJS => http://nodejs.org
 2. Install MongoDB
+⋅⋅* Download
+    > curl http://downloads.mongodb.org/osx/mongodb-osx-x86_64-2.2.0.tgz > ~/Downloads/mongo.tgz
+3. Install MongoDB Driver for Node
+
 
 .. * Download
 > curl http://downloads.mongodb.org/osx/mongodb-osx-x86_64-2.2.0.tgz > ~/Downloads/mongo.tgz
