@@ -3,11 +3,12 @@
 ## Prerequisites
 1. Install NodeJS => http://nodejs.org
 2. Install MongoDB
+
 .. * Download
-	> curl http://downloads.mongodb.org/osx/mongodb-osx-x86_64-2.2.0.tgz > ~/Downloads/mongo.tgz
+> curl http://downloads.mongodb.org/osx/mongodb-osx-x86_64-2.2.0.tgz > ~/Downloads/mongo.tgz
 .. * Extract
-	> cd ~/Downloads
-	> tar -zxvf mongo.tgz
+> cd ~/Downloads
+> tar -zxvf mongo.tgz
 .. * Move to preferable location
 	> sudo mv -n mongodb-osx-x86_64-2.2.0/ /usr/local/
 .. *  symbolic link
