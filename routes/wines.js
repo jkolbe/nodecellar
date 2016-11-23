@@ -3,8 +3,9 @@
 var mongo = require('mongodb');
 
 var Server = mongo.Server,
-	Db = mongo.Db,
-	BSON = mongo.BSONPure;
+	Db = mongo.Db;
+
+var BSON = require('bson').BSONPure;
 
 var server = new Server('localhost', 27017, {auto_reconnect: true});
 db = new Db('winedb', server);
@@ -38,13 +39,13 @@ exports.findAll = function(req, res) {
 };
 
 exports.findById = function(req, res) {
-	// var id = req.params.id;
- //    console.log('Retrieving wine: ' + id);
- //    db.collection('wines', function(err, collection) {
- //        collection.findOne({'_id':new mongo.ObjectID(id)}, function(err, item) {
- //            res.send(item);
- //        });
- //    });
+	var id = req.params.id;
+    console.log('Retrieving wine: ' + id);
+    db.collection('wines', function(err, collection) {
+        collection.findOne({'_id':new BSON.ObjectID(id)}, 
+        	function(err, item) { res.send(item); }
+        );
+    });
 
 	//res.send({id:req.params.id, name: "The Name", description: "description"});
 }

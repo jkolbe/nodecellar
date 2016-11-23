@@ -44,10 +44,10 @@
 | Method        | URL           | Action  |
 | ------------- |:-------------:| -----:|
 | GET    	    | /wines | Retrieve all wines |
-| GET    	    | /wines/5069b47aa892630aae000001 | Retrieve the wine with the specified _id |
+| GET    	    | /wines/5835b8b28706f500ff10b948 | Retrieve the wine with the specified _id |
 | POST    	    | /wines | Add a new wine |
-| PUT    	    | /wines/5069b47aa892630aae000001 | Update wine with the specified _id |
-| DELETE    	| /wines/5069b47aa892630aae000001 | Delete the wine with the specified _id |
+| PUT    	    | /wines/5835b8b28706f500ff10b948 | Update wine with the specified _id |
+| DELETE    	| /wines/5835b8b28706f500ff10b949 | Delete the wine with the specified _id |
 
 
 
