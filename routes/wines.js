@@ -40,9 +40,9 @@ exports.findById = function(req, res) {
 	var id = req.params.id;
     console.log('Retrieving wine: ' + id);
     db.collection('wines', function(err, collection) {
-        collection.findOne({'_id':new BSON.ObjectID(id)}, 
-        	function(err, item) { res.send(item); }
-        );
+        collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) { 
+            res.send(item); 
+        });
     });
 }
 
@@ -54,7 +54,7 @@ exports.addWine = function(req, res) {
     db.collection('wines', function(err, collection) {
         collection.insert(wine, {safe:true}, function(err, result){
             if(err) {
-                res.send({error: 'An error occured'});
+                res.send({error: 'An error occured - ' + err});
             } else {
                 res.send(result[0]);
             }
@@ -63,8 +63,36 @@ exports.addWine = function(req, res) {
 }
 
 
-exports.updateWine = function(req, res) {}
-exports.deleteWine = function(req, res) {}
+exports.updateWine = function(req, res) {
+    var id = req.params.id;
+    var wine = req.body;
+    console.log('Updating wine: ' + id + ' updates: ' + JSON.stringify(wine));
+    db.collection('wines', function(err, collection) {
+        collection.update({'_id':new BSON.ObjectID(id)}, wine, {safe: true}, function(err, result){
+            if(err) {
+                res.send({error: 'An error occured - ' + err });
+            } else {
+                res.send(wine);
+            }
+        });
+    });
+}
+
+
+exports.deleteWine = function(req, res) {
+    var id = req.params.id;
+    console.log('Deleting wine: ' + id);
+    db.collection('wines', function(err, collection) {
+        collection.remove({'_id':new BSON.ObjectID(id)}, {safe: true}, function(err, result){
+            if(err) {
+                res.send({error: 'An error occured - ' + err});
+            } else {
+                console.log('' + result + ' document(s) deleted');
+                res.send(req.body);
+            }
+        });
+    });
+}
 
 
 // populate DB with sample data
