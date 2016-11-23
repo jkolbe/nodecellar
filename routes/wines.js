@@ -1,3 +1,5 @@
+// http://www.stumbleupon.com/su/7kypQe/:1kxAWPLHn:TcezbGaI/coenraets.org/blog/2012/10/creating-a-rest-api-using-node-js-express-and-mongodb
+
 var mongo = require('mongodb');
 
 var Server = mongo.Server,
@@ -20,12 +22,31 @@ db.open(function(err, db){
 	}
 });
 
+// mongoDB methods
+// find() findOne()
+
 exports.findAll = function(req, res) {
-	res.send([{name:'wine1'}, {name:'wine2'}, {name:'wine3'}]);
+	db.collection('wines', function(err, collection){
+		collection.find().toArray(
+			function(err, items) {
+				res.send(items);
+			}
+		);
+	});
+
+	//res.send([{name:'wine1'}, {name:'wine2'}, {name:'wine3'}]);
 };
 
 exports.findById = function(req, res) {
-	res.send({id:req.params.id, name: "The Name", description: "description"});
+	// var id = req.params.id;
+ //    console.log('Retrieving wine: ' + id);
+ //    db.collection('wines', function(err, collection) {
+ //        collection.findOne({'_id':new mongo.ObjectID(id)}, function(err, item) {
+ //            res.send(item);
+ //        });
+ //    });
+
+	//res.send({id:req.params.id, name: "The Name", description: "description"});
 }
 
 exports.addWine = function(req, res) {}
